@@ -1,7 +1,11 @@
 
 .jumbotron{
-	background-image: url('../image/background_1.jpg');
-	background-size: cover;
+	background-image: url('../Image/background_1.jpg');
+	background-repeat: no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+	height: 100%;
 }
 
 .panel-primary {
