@@ -1,4 +1,19 @@
 
+// list of f my color palette
+var arrColors = ['rgba(13, 36, 112, 1)','rgba(4, 36, 129, 1)', 'rgba(20, 55, 153, 1)', 
+'rgba(43, 78, 176, 1)', 'rgba(66, 100, 196, 1)',
+'rgba(79, 114, 215, 1)','rgba(93, 129, 231, 1)', 
+'rgba(159, 180, 241, 1))','rgba(193, 205, 237, 1)'];
+
+// helper functions 
+var makeRepeated = (arr, repeats) =>
+[].concat(...Array.from({ length: repeats }, () => arr));
+
+function convertAsString(val) {
+  return "OTU " + val.toString();
+}
+
+// main functions
 function buildMetadata(sample) {
     d3.json("data/samples.json").then(importedData =>{
 
@@ -17,10 +32,6 @@ function buildMetadata(sample) {
 
   })
 
-}
-
-function convertAsString(val) {
-  return "OTU " + val.toString();
 }
 
 function barChart(data){
@@ -42,6 +53,9 @@ function barChart(data){
       x: sample_values.reverse(),
       y: yAxis.reverse(),
       text: otu_labels.reverse(),
+      marker: {
+      color: 'rgba(4, 36, 129, 1)', // custom color based on my color palette
+     },
       type: "bar",
       orientation: "h"
       
@@ -60,16 +74,21 @@ function bubbleChart(data) {
   let x = data.otu_ids;
   let y = data.sample_values;
   let markersize = data.sample_values;
-  let markercolors = data.otu_ids;
+  let markercolors = data.otu_ids; // used my custom list of colors instead, can be replaced with this
   let textvalues = data.otu_labels;
+  let repeatColors = markercolors.length/([...arrColors, 'rgba(224, 227, 234, 1)'].length);
+  
+  //console.log(repeatColors);
+  //console.log(markercolors.length);
+  //console.log([...arrColors, 'rgba(224, 227, 234, 1)'].length);
 
   let trace =[{
     x: x,
     y: y,
     mode: 'markers',
     marker: {
-      size: markersize,
-      color: markercolors,
+       color: makeRepeated([...arrColors, 'rgba(224, 227, 234, 1)'], repeatColors), //list of colors based on my color palette
+       size: markersize,
     },
     text: textvalues
   }];
@@ -109,7 +128,7 @@ function gaugeChart(data) {
 
   let trace = [{ type: 'scatter',
      x: [0], y:[0],
-      marker: {size: 28, color:'850000'},
+      marker: {size: 28, color:'0b226e'},
       showlegend: false,
       name: 'WASH FREQ',
       text: data.wfreq,
@@ -122,12 +141,7 @@ function gaugeChart(data) {
     textfont:{
       size : 16,
       },
-    marker: {colors:['rgba(6, 51, 0, .5)', 'rgba(9, 77, 0, .5)', 
-                           'rgba(12, 102, 0 ,.5)', 'rgba(14, 127, 0, .5)',
-                           'rgba(110, 154, 22, .5)','rgba(170, 202, 42, .5)', 
-                           'rgba(202, 209, 95, .5)','rgba(210, 206, 145, .5)', 
-                           'rgba(232, 226, 202, .5)','rgba(255, 255, 255, 0)'
-                    ]},
+    marker: {colors:[...arrColors,'rgba(255, 255, 255, 0)']},
     labels: ['8-9', '7-8', '6-7', '5-6', '4-5', '3-4', '2-3', '2-1', '0-1',''],
     hoverinfo: 'text',
     hole: .5,
@@ -139,9 +153,9 @@ function gaugeChart(data) {
     shapes:[{
         type: 'path',
         path: path,
-        fillcolor: '850000',
+        fillcolor: '0b226e',
         line: {
-          color: '850000'
+          color: '0b226e'
         }
       }],
 
