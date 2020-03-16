@@ -70,8 +70,8 @@ Hulcr, J. et al.(2012) _A Jungle in There: Bacteria in Belly Buttons are Highly 
 'rgba(193, 205, 237, 1)'
 
 ## output screen shots
-![](screen_shots/screen_shot1.png)
-![](screen_shots/screen_shot2.png)
+![](screen_shots/screen_shot3.png)
+![](screen_shots/screen_shot4.png)
 
 ## link to the site
 
