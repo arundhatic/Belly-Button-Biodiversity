@@ -61,7 +61,7 @@ Deploy your app to a free static page hosting service, such as GitHub Pages. Sub
 
 Hulcr, J. et al.(2012) _A Jungle in There: Bacteria in Belly Buttons are Highly Diverse, but Predictable_. Retrieved from: [http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/](http://robdunnlab.com/projects/belly-button-biodiversity/results-and-data/)
 
-## my color alette for this project (rgba):
+## color palette for this project (rgba):
 
 'rgba(13, 36, 112, 1)','rgba(4, 36, 129, 1)', 
 'rgba(20, 55, 153, 1)', 'rgba(43, 78, 176, 1)', 
