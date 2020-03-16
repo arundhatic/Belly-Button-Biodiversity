@@ -36,6 +36,8 @@ function buildMetadata(sample) {
 
 function barChart(data){
 
+    console.log("barChart", data);
+
     data.sample_values.sort((a, b) => b - a);
 
     let otu_ids = data.otu_ids.slice(0,10);
@@ -70,6 +72,8 @@ function barChart(data){
 }
 
 function bubbleChart(data) {
+
+  console.log("bubbleChart", data);
 
   let x = data.otu_ids;
   let y = data.sample_values;
@@ -109,6 +113,12 @@ function bubbleChart(data) {
 }
 
 function gaugeChart(data) {
+
+  console.log("gaugeChart", data);
+
+  if(data.wfreq === null){
+    data.wfreq = 0;
+  }
 
   let degree = parseInt(data.wfreq) * (180/10);
 
@@ -176,12 +186,14 @@ function gaugeChart(data) {
 
 function buildCharts(sample) {
 
+  console.log("sample",sample);
+
   d3.json("data/samples.json").then(importedData =>{
     var objs = importedData.samples;
-    //console.log("objs", objs);
+   // console.log("objs", objs);
 
-    var matchedSampleObj = objs.filter(sampleData => sampleData["id"] === sample);
-   // console.log("matchedSampleObj", matchedSampleObj);
+    var matchedSampleObj = objs.filter(sampleData => sampleData.id === sample);
+    console.log("matchedSampleObj", matchedSampleObj[0]);
       // bar Chart
       barChart(matchedSampleObj[0]);
 
@@ -236,10 +248,12 @@ function init() {
 
 function optionChanged(newSample) {
   // get new data each time a new sample is selected
-  buildMetadata(newSample);
-  buildCharts(newSample);
-  buildGaugeChart(newSample)
- 
+
+   console.log('new Sample', newSample);
+    buildMetadata(newSample);
+    buildCharts(newSample);
+    buildGaugeChart(newSample);
+   
 }
 
 // initialize the dashboard
