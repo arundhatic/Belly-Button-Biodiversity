@@ -1,5 +1,5 @@
 
-// list of f my color palette
+// array of my color palette
 var arrColors = ['rgba(13, 36, 112, 1)','rgba(4, 36, 129, 1)', 'rgba(20, 55, 153, 1)', 
 'rgba(43, 78, 176, 1)', 'rgba(66, 100, 196, 1)',
 'rgba(79, 114, 215, 1)','rgba(93, 129, 231, 1)', 
